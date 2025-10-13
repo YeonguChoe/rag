@@ -1,4 +1,4 @@
-# from langchain_ollama import ChatOllama
+from langchain_ollama import ChatOllama
 from fastapi import FastAPI
 from pydantic import BaseModel
 from geopy.geocoders import Nominatim
@@ -6,18 +6,18 @@ from geopy.geocoders import Nominatim
 
 app = FastAPI()
 
-# llm = ChatOllama(model="qwen3:0.6b")
+llm = ChatOllama(model="qwen3:0.6b")
 
-# text = "Tell me about Canada"
+text = "Tell me about Canada"
 
-# messages = [
-#     (
-#         "system",
-#         "You are knowledgeable of geography. You should answer in 5 sentences",
-#     ),
-#     ("human", text),
-# ]
-# ai_msg = llm.invoke(messages)
+messages = [
+    (
+        "system",
+        "You are knowledgeable of geography. You should answer in 5 sentences",
+    ),
+    ("human", text),
+]
+ai_msg = llm.invoke(messages)
 # print(ai_msg)
 
 
@@ -36,4 +36,4 @@ def get_address(latitude, longitude):
 @app.post("/message")
 async def root(request: UserRequest):
     address = get_address(request.latitude, request.longitude)
-    return {"message": f"Your location is {address}"}
+    return {"message": f"Your location is {address}. and answer is {ai_msg}"}
