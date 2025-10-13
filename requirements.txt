@@ -1,1 +1,4 @@
 langchain-ollama
+fastapi[standard]
+pydantic
+geopy
