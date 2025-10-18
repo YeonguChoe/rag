@@ -1,4 +1,5 @@
 langchain-ollama
 fastapi[standard]
-pydantic
+pydantic==2.12.3
 geopy
+uvicorn[standard]

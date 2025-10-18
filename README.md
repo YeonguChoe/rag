@@ -5,12 +5,43 @@
 - qwen
 
 ## How to run
+- Install requirements
 ```bash
-python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt && python app.py
+python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt
+```
+## Run FastAPI server
+- Local
+```bash
+fastapi dev main.py
+```
+
+- Production
+```bash
+uvicorn main:app --host 0.0.0.0 --port 8000
+```
+
+## Server address with port
+```
+http://127.0.0.1:8000/message
 ```
 
 ## POST /message
-
+- Client Request
+```json
+{
+    "query": "What are the nearby coffee shops?",
+    "location": {
+        "latitude": 43.66911640522959,
+        "longitude": -79.38359555225068
+    }
+}
+```
+- Server Response
+```json
+{
+    "answer": "Time is 10:00pm"
+}
+```
 
 
 ### Reference
