@@ -8,9 +8,14 @@ from geopy.geocoders import Nominatim
 app = FastAPI()
 
 # CORS setting
+origins = [
+    "https://rag-demo-qqgzdmsr9-yeongu-choes-projects.vercel.app",
+    "https://rag-demonstration.vercel.app",
+    "*"
+]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],  # React dev server
+    allow_origins=origins,  # React dev server
     allow_credentials=True,
     allow_methods=["*"],  # Allows all methods (GET, POST, etc.)
     allow_headers=["*"],  # Allows all headers
