@@ -56,7 +56,7 @@ async def root(request: RequestModel):
             "system",
             "You are AI assistant. You need to answer to the question.",
         ),
-        ("user", "User lives in address"),
+        ("user", f"User lives in {address}"),
         ("user", request.query),
     ]
     output = llm.invoke(messages)
