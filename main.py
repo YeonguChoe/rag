@@ -54,11 +54,11 @@ async def root(request: RequestModel):
     messages = [
         (
             "system",
-            f"""Answer user's question""",
+            f"""I am a helpful assistant.""",
         ),
         (
             "system",
-            f"""I live in cyber space.""",
+            f"""I will answer any question.""",
         ),
         ("user", f"""I live in {address}."""),
         ("user", request.query),
