@@ -60,4 +60,4 @@ async def root(request: RequestModel):
         ("user", request.query),
     ]
     output = llm.invoke(messages)
-    return ResponseModel(answer=output)
+    return ResponseModel(answer=output.content)
