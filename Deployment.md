@@ -16,7 +16,7 @@ sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get install nginx 
 server {
     listen 80;
     listen [::]:80;  # Remove if IPv6 unsupported
-    server_name 172.105.21.209;
+    server_name 172.234.163.116;
 
     location / {
         proxy_pass http://127.0.0.1:8000;
