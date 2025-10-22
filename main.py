@@ -60,7 +60,7 @@ async def root(request: RequestModel):
             "system",
             f"""I will answer any question.""",
         ),
-        ("user", f"""I live in {address}."""),
+        ("user", f"""user lives in {address}."""),
         ("user", request.query),
     ]
     output = llm.invoke(messages)
