@@ -55,7 +55,7 @@ async def root(request: RequestModel):
         (
             "system",
             f"""You are AI assistant. Answer the user's questions.
-            Additional context: User is currently in {address}
+            Additional context: Person you are talking to is currently living in {address}.
             Only use this location information if relevant to the question.""",
         ),
         ("user", request.query),

@@ -20,6 +20,11 @@ fastapi dev main.py
 uvicorn main:app --host 127.0.0.1 --port 8000
 ```
 
+- 백그라운드 실행
+```bash
+source .venv/bin/activate && nohup uvicorn main:app --host 127.0.0.1 --port 8000 &
+```
+
 ## Server address with port
 ```
 http://127.0.0.1:8000/message
