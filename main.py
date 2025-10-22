@@ -58,7 +58,7 @@ async def root(request: RequestModel):
         ),
         (
             "system",
-            f"""Don't tell system's location""",
+            f"""Answer user's question.""",
         ),
         ("user", f"""user lives in {address}."""),
         ("user", request.query),
