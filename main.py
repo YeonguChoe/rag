@@ -58,7 +58,7 @@ async def root(request: RequestModel):
             Answer the user's question as best as possible on any question.
             """,
         ),
-        ("user", """I live in {address}"""),
+        ("user", f"""I live in {address}"""),
         ("user", request.query),
     ]
     output = llm.invoke(messages)
