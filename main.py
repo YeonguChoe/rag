@@ -11,7 +11,7 @@ app = FastAPI()
 origins = [
     "https://rag-demo-qqgzdmsr9-yeongu-choes-projects.vercel.app",
     "https://rag-demonstration.vercel.app",
-    "*"
+    "*",
 ]
 app.add_middleware(
     CORSMiddleware,
@@ -22,40 +22,42 @@ app.add_middleware(
 )
 
 # GPT model
-# llm = ChatOllama(model="qwen3:0.6b")
+llm = ChatOllama(model="qwen3:0.6b")
 
-# text = "Tell me about Canada"
-
-# messages = [
-#     (
-#         "system",
-#         "You are knowledgeable of geography. You should answer in 5 sentences",
-#     ),
-#     ("human", text),
-# ]
-# ai_msg = llm.invoke(messages)
-# print(ai_msg)
 
 # Pydantic model
 class LocationModel(BaseModel):
     # positive
-    latitude:float
+    latitude: float
     # negative
     longitude: float
+
 
 class RequestModel(BaseModel):
     query: str
     location: LocationModel
 
+
 class ResponseModel(BaseModel):
     answer: str
 
+
 def get_address(latitude, longitude):
     geolocator = Nominatim(user_agent="rag")
-    location = geolocator.reverse((latitude, longitude),language="en")
+    location = geolocator.reverse((latitude, longitude), language="en")
     return location.raw["address"]["city"]
+
 
 @app.post("/message")
 async def root(request: RequestModel):
     address = get_address(request.location.latitude, request.location.longitude)
-    return ResponseModel(answer=f"You are from {address}")
+    messages = [
+        (
+            "system",
+            "You are AI assistant. You need to answer to the question.",
+        ),
+        ("user", "User lives in address"),
+        ("user", request.query),
+    ]
+    output = llm.invoke(messages)
+    return ResponseModel(answer=output)
