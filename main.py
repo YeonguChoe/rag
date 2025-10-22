@@ -54,12 +54,13 @@ async def root(request: RequestModel):
     messages = [
         (
             "system",
-            f"""
-            You are an AI assistant.
-            Help user.
-            """,
+            f"""You are an AI assistant.""",
         ),
-        ("user", f"""user lives in {address}."""),
+        (
+            "system",
+            f"""I live in cyber space.""",
+        ),
+        ("user", f"""I live in {address}."""),
         ("user", request.query),
     ]
     output = llm.invoke(messages)
