@@ -54,9 +54,10 @@ async def root(request: RequestModel):
     messages = [
         (
             "system",
-            "You are AI assistant. You need to answer to the question.",
+            f"""You are AI assistant. Answer the user's questions.
+            Additional context: User is currently in {address}
+            Only use this location information if relevant to the question.""",
         ),
-        ("user", f"User lives in {address}"),
         ("user", request.query),
     ]
     output = llm.invoke(messages)
