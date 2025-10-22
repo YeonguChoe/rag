@@ -54,7 +54,7 @@ async def root(request: RequestModel):
     messages = [
         (
             "system",
-            f"""You are an AI assistant.""",
+            f"""Answer user's question""",
         ),
         (
             "system",
