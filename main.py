@@ -56,9 +56,9 @@ async def root(request: RequestModel):
             "system",
             f"""You are AI assistant. Answer the user's questions.
             Answer the user's question as best as possible on any question.
-            Additional context: user you are talking to is currently living in {address}.
             """,
         ),
+        ("user", """I live in {address}"""),
         ("user", request.query),
     ]
     output = llm.invoke(messages)
