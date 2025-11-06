@@ -20,12 +20,12 @@ fastapi dev main.py
 uvicorn main:app --host 127.0.0.1 --port 8000
 ```
 
-- 백그라운드 실행
+- Run webserver in the background
 ```bash
 source .venv/bin/activate && nohup uvicorn main:app --host 127.0.0.1 --port 8000 &
 ```
 
-- 백그라운드 프로세스 종료
+- Stop background process
 ```bash
 kill -9 $(pgrep -f "uvicorn main:app")
 ```
