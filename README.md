@@ -1,4 +1,4 @@
-# rag
+# RAG (Retrieval-Augmented Generation)
 
 ## Prerequisite
 - Ollama
